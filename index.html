@@ -66,10 +66,21 @@
       </div>
 
       <div class="info">
-        <p>Cant. Materias Regulares: <span class="mat_regulares"></span></p>
-        <p>Cant. Materias Aprobadas: <span class="mat_aprobadas"></span></p>
-        <p>Cant. Materias Restantes: <span class="mat_restantes"></span></p>
-        <p>Porc. Avance Carrera: <span class="porc_avance"></span>%</p>
+        <div>
+          <p>Cant. Materias Regulares: <span class="mat_regulares"></span></p>
+          <p>Cant. Materias Aprobadas: <span class="mat_aprobadas"></span></p>
+          <p>Cant. Materias Restantes: <span class="mat_restantes"></span></p>
+          <p>Porc. Avance Carrera: <span class="porc_avance"></span>%</p>
+        </div>
+        <div class="div_select">
+          <label for="select_carreras">Elegir Carrera:</label>
+          <select name="select_carreras">
+            <option value="ii" selected>Ingeniería en Informática</option>
+            <option value="iamb">Ingeniería Ambiental</option>
+            <option value="irh">Ingeniería en Recursos Hídricos</option>
+            <option value="iag">Ingeniería en Agrimensura</option>
+          </select>
+        </div>
       </div>
     </main>
     <script src="PlanInformatica.js"></script>
