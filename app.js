@@ -1,19 +1,12 @@
 //elements
-let materias_cuatri_1 = document.querySelector(".materias_cuatri_1");
-let materias_cuatri_2 = document.querySelector(".materias_cuatri_2");
-let materias_cuatri_3 = document.querySelector(".materias_cuatri_3");
-let materias_cuatri_4 = document.querySelector(".materias_cuatri_4");
-let materias_cuatri_5 = document.querySelector(".materias_cuatri_5");
-let materias_cuatri_6 = document.querySelector(".materias_cuatri_6");
-let materias_cuatri_7 = document.querySelector(".materias_cuatri_7");
-let materias_cuatri_8 = document.querySelector(".materias_cuatri_8");
-let materias_cuatri_9 = document.querySelector(".materias_cuatri_9");
-let materias_cuatri_10 = document.querySelector(".materias_cuatri_10");
+const materias_cuatri = document.querySelectorAll(".materias_cuatri");
 
-let cant_mat_restantes = document.querySelector(".mat_restantes");
-let cant_mat_aprobadas = document.querySelector(".mat_aprobadas");
-let cant_mat_regulares = document.querySelector(".mat_regulares");
-let porc_avance = document.querySelector(".porc_avance");
+const cant_mat_restantes = document.querySelector(".mat_restantes");
+const cant_mat_aprobadas = document.querySelector(".mat_aprobadas");
+const cant_mat_regulares = document.querySelector(".mat_regulares");
+const porc_avance = document.querySelector(".porc_avance");
+
+const selector_carrera = document.getElementsByName("select_carreras")[0];
 
 //variables
 let regulares = [0];
@@ -21,83 +14,99 @@ let aprobadas = [0];
 let materias = [];
 
 //funciones
-const getMaterias = () => {
-  materias = getPlanInformatica();
-  // console.log(materias);
+const getMaterias = (carrera) => {
+  switch (carrera) {
+    case "ii":
+      materias = getPlanInformatica();
+      break;
+    case "iamb":
+      materias = getPlanAmbiental();
+      break;
+    case "irh":
+      materias = getPlanRecursosHidricos();
+      break;
+    case "iag":
+      materias = getPlanAgrimensura();
+      break;
+  }
+
   setMaterias(materias);
 };
 
 const setMaterias = (materias) => {
+  limpiarElementos();
   materias.forEach((materia, index) => {
-    // if (materia.cuatrimestre === 1) {
-    //   const li = document.createElement("li");
-    //   li.appendChild(document.createTextNode(`${materia.nombre}`));
-    //   materias_cuatri_1.appendChild(li);
-    // }
     let li;
     switch (materia.cuatrimestre) {
       case 1:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_1.appendChild(li);
+        materias_cuatri[0].appendChild(li);
         break;
       case 2:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_2.appendChild(li);
+        materias_cuatri[1].appendChild(li);
         break;
       case 3:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_3.appendChild(li);
+        materias_cuatri[2].appendChild(li);
         break;
       case 4:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_4.appendChild(li);
+        materias_cuatri[3].appendChild(li);
         break;
       case 5:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_5.appendChild(li);
+        materias_cuatri[4].appendChild(li);
         break;
       case 6:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_6.appendChild(li);
+        materias_cuatri[5].appendChild(li);
         break;
       case 7:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_7.appendChild(li);
+        materias_cuatri[6].appendChild(li);
         break;
       case 8:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_8.appendChild(li);
+        materias_cuatri[7].appendChild(li);
         break;
       case 9:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_9.appendChild(li);
+        materias_cuatri[8].appendChild(li);
         break;
       case 10:
         li = document.createElement("li");
         li.appendChild(document.createTextNode(`${materia.nombre}`));
         li.id = `${materia.nro}`;
-        materias_cuatri_10.appendChild(li);
+        materias_cuatri[9].appendChild(li);
         break;
     }
   });
+};
+const limpiarElementos = () => {
+  for (let i = 0; i < 10; i++) {
+    while (materias_cuatri[i].firstChild) {
+      materias_cuatri[i].removeChild(materias_cuatri[i].lastChild);
+    }
+  }
 };
 
 const cambiarEstado = (id) => {
@@ -135,7 +144,6 @@ const cambiarEstado = (id) => {
 };
 
 const actualizarInfo = () => {
-  //actualizar info
   cant_mat_regulares.innerText = regulares.length - aprobadas.length;
   cant_mat_aprobadas.innerText = aprobadas.length - 1;
   cant_mat_restantes.innerText = materias.length - aprobadas.length - 1;
@@ -178,7 +186,17 @@ document.addEventListener("click", function (e) {
   }
 });
 
+//onChange selector carrera
+selector_carrera.addEventListener("change", (e) => {
+  regulares = [0];
+  aprobadas = [0];
+  materias = [];
+  getMaterias(e.target.value);
+  actualizarInfo();
+  actualizarMaterias();
+});
+
 //--------------------------------------------
-getMaterias();
+getMaterias("ii");
 actualizarInfo();
 actualizarMaterias();
