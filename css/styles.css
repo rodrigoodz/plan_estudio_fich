@@ -18,8 +18,9 @@ main {
   color: #bdc3c7;
   padding: 10px;
 }
-.info h4 {
+.info p {
   font-weight: 200;
+  letter-spacing: 0.5px;
 }
 
 .titulo_ciclo {
@@ -43,11 +44,14 @@ main {
 
 li {
   list-style: none;
-  border: 1px solid #bdc3c7;
+  border: 1px dashed #bdc3c7;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   padding: 5px;
   margin: 2px;
   color: black;
-  /* color: #bdc3c7; */
+  font-weight: 400;
+  border-radius: 20px;
+  text-align: center;
 }
 
 li:hover {
@@ -64,14 +68,17 @@ li:hover {
 
 .regularizada {
   background-color: rgba(0, 128, 0, 0.2);
+  border-style: solid;
 }
 
 .aprobada {
   background-color: #3498db;
+  border-style: solid;
 }
 
 .puede_cursar {
   background-color: #d1d8e0;
+  border-style: solid;
 }
 
 /* Media queries */
