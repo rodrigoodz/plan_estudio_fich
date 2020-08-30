@@ -73,3 +73,17 @@ li:hover {
 .puede_cursar {
   background-color: #d1d8e0;
 }
+
+/* Media queries */
+@media (max-width: 575.98px) {
+  main {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  li {
+    height: 60px;
+  }
+  .info {
+    text-align: center;
+  }
+}
