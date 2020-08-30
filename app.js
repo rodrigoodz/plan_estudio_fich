@@ -150,8 +150,8 @@ const cambiarEstado = (id) => {
     actualizarInfo();
     actualizarMaterias();
   }
-  console.log("regulares ", regulares);
-  console.log("aprobadas ", aprobadas);
+  // console.log("regulares ", regulares);
+  // console.log("aprobadas ", aprobadas);
 };
 
 const actualizarInfo = () => {
@@ -187,9 +187,13 @@ const actualizarMaterias = () => {
 
 //click
 document.addEventListener("click", function (e) {
-  // console.log(e.target.tagName);
-  if (e.target.tagName === "LI") {
+  // console.log(e);
+  if (e.target.tagName === "LI" && e.target.className != "") {
     cambiarEstado(e.target.id);
+  } else if (e.target.tagName === "LI" && e.target.className == "") {
+    alert(
+      "No podes cursar esta materia hasta no regularizar/aprobar las anteriores"
+    );
   }
 });
 
