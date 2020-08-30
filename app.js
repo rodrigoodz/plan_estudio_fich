@@ -144,7 +144,7 @@ const cambiarEstado = (id) => {
   }
   if (esta_aprobado && esta_regular) {
     const elemento = document.getElementById(id);
-    elemento.className = "";
+    elemento.removeAttribute("class");
     aprobadas = aprobadas.filter((materia) => materia != id);
     regulares = regulares.filter((materia) => materia != id);
     actualizarInfo();
@@ -167,22 +167,20 @@ const actualizarInfo = () => {
 
 const actualizarMaterias = () => {
   materias.forEach((materia) => {
-    console.log("regulares: ", regulares);
-    console.log("pa cursar", aprobadas);
     const contiene_regulares = materia.regularizadas_para_cursar.every((i) =>
       regulares.includes(i)
     );
     const contiene_aprobadas = materia.aprobadas_para_cursar.every((i) =>
       aprobadas.includes(i)
     );
-    console.log(materia.nombre, contiene_regulares);
-    console.log(materia.nombre, contiene_aprobadas);
 
     const ya_cursada = regulares.find((reg) => reg == materia.nro);
-    console.log(ya_cursada);
     if (contiene_regulares && contiene_aprobadas && !ya_cursada) {
       const elemento = document.getElementById(materia.nro);
       elemento.className = "puede_cursar";
+    } else if (!ya_cursada) {
+      const elemento = document.getElementById(materia.nro);
+      elemento.removeAttribute("class");
     }
   });
 };
