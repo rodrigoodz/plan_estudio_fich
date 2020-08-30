@@ -150,13 +150,13 @@ const cambiarEstado = (id) => {
     actualizarInfo();
     actualizarMaterias();
   }
-  // console.log("regulares ", regulares);
-  // console.log("aprobadas ", aprobadas);
+  console.log("regulares ", regulares);
+  console.log("aprobadas ", aprobadas);
 };
 
 const actualizarInfo = () => {
   //actualizar info
-  cant_mat_regulares.innerText = regulares.length - 1;
+  cant_mat_regulares.innerText = regulares.length - aprobadas.length;
   cant_mat_aprobadas.innerText = aprobadas.length - 1;
   cant_mat_restantes.innerText = materias.length - aprobadas.length - 1;
   porc_avance.innerText = (
@@ -175,6 +175,7 @@ const actualizarMaterias = () => {
     );
 
     const ya_cursada = regulares.find((reg) => reg == materia.nro);
+
     if (contiene_regulares && contiene_aprobadas && !ya_cursada) {
       const elemento = document.getElementById(materia.nro);
       elemento.className = "puede_cursar";
