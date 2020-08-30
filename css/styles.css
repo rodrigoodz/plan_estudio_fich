@@ -57,7 +57,7 @@ li:hover {
 }
 
 /*################################
-Info y Select
+Info , Ref, Select
 ################################*/
 /* Info */
 .info {
@@ -71,6 +71,43 @@ Info y Select
 .info p {
   font-weight: 200;
   letter-spacing: 0.5px;
+}
+
+/* Referencias */
+
+.referencias {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 41px 0px rgba(0, 0, 0, 0.75);
+}
+.ref_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.ref_circulo {
+  height: 50px;
+  width: 50px;
+
+  border-radius: 50%;
+}
+#ref_puede_cursar {
+  background-color: #d1d8e0;
+}
+#ref_regular {
+  background-color: rgba(0, 128, 0, 0.2);
+}
+#ref_aprobada {
+  background-color: #3498db;
+}
+
+.ref_texto {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /* Select */
