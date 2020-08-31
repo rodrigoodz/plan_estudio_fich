@@ -50,6 +50,7 @@ li {
   font-weight: 400;
   border-radius: 20px;
   text-align: center;
+  transition: 0.5s ease-in;
 }
 
 li:hover {
