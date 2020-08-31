@@ -1486,7 +1486,7 @@ const getPlanAgrimensura = () => {
     },
     {
       nro: 20,
-      cuatrimestre: 5,
+      cuatrimestre: 6,
       nombre: "Geodesia",
       cht: 105,
       regularizadas_para_cursar: [0],
@@ -1792,7 +1792,7 @@ const getPlanAgrimensura = () => {
     },
     {
       nro: 33,
-      cuatrimestre: 9,
+      cuatrimestre: 10,
       nombre: "Valuación Inmobiliaria",
       cht: 90,
       regularizadas_para_cursar: [0],
