@@ -32,70 +32,47 @@ const getMaterias = (carrera) => {
   setMaterias(materias);
 };
 
+const setMateriaItem = (materia, num) => {
+  let li;
+  li = document.createElement("li");
+  li.appendChild(document.createTextNode(`${materia.nombre}`));
+  li.id = `${materia.nro}`;
+  materias_cuatri[num].appendChild(li);
+};
+
 const setMaterias = (materias) => {
   limpiarElementos();
   materias.forEach((materia, index) => {
-    let li;
     switch (materia.cuatrimestre) {
       case 1:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[0].appendChild(li);
+        setMateriaItem(materia, 0);
         break;
       case 2:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[1].appendChild(li);
+        setMateriaItem(materia, 1);
         break;
       case 3:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[2].appendChild(li);
+        setMateriaItem(materia, 2);
         break;
       case 4:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[3].appendChild(li);
+        setMateriaItem(materia, 3);
         break;
       case 5:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[4].appendChild(li);
+        setMateriaItem(materia, 4);
         break;
       case 6:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[5].appendChild(li);
+        setMateriaItem(materia, 5);
         break;
       case 7:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[6].appendChild(li);
+        setMateriaItem(materia, 6);
         break;
       case 8:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[7].appendChild(li);
+        setMateriaItem(materia, 7);
         break;
       case 9:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[8].appendChild(li);
+        setMateriaItem(materia, 8);
         break;
       case 10:
-        li = document.createElement("li");
-        li.appendChild(document.createTextNode(`${materia.nombre}`));
-        li.id = `${materia.nro}`;
-        materias_cuatri[9].appendChild(li);
+        setMateriaItem(materia, 9);
         break;
     }
   });
