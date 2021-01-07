@@ -29,7 +29,6 @@ const getMaterias = (carrera) => {
       materias = getPlanAgrimensura();
       break;
   }
-
   setMaterias(materias);
 };
 
@@ -139,14 +138,18 @@ const cambiarEstado = (id) => {
     actualizarInfo();
     actualizarMaterias();
   }
-  console.log("regulares ", regulares);
-  console.log("aprobadas ", aprobadas);
+  //console.log("regulares ", regulares);
+  //console.log("aprobadas ", aprobadas);
 };
 
 const actualizarInfo = () => {
-  cant_mat_regulares.innerText = regulares.length - aprobadas.length;
-  cant_mat_aprobadas.innerText = aprobadas.length - 1;
-  cant_mat_restantes.innerText = materias.length - aprobadas.length - 1;
+  const cant_total = materias.length;
+  const cant_regulares = regulares.length - 1;
+  const cant_aprobadas = aprobadas.length - 1;
+
+  cant_mat_regulares.innerText = cant_regulares - cant_aprobadas;
+  cant_mat_aprobadas.innerText = cant_aprobadas;
+  cant_mat_restantes.innerText = cant_total - cant_aprobadas;
   porc_avance.innerText = (
     ((aprobadas.length - 1) * 100) /
     materias.length
