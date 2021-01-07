@@ -41,6 +41,9 @@ main {
 }
 
 li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   border: 1px dashed #bdc3c7;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
