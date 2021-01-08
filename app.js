@@ -8,6 +8,8 @@ const porc_avance = document.querySelector(".porc_avance");
 
 const selector_carrera = document.getElementsByName("select_carreras")[0];
 
+const titulo_header = document.querySelector(".carrera_header");
+
 //variables
 let regulares = [0];
 let aprobadas = [0];
@@ -17,15 +19,19 @@ let materias = [];
 const getMaterias = (carrera) => {
   switch (carrera) {
     case "ii":
+      titulo_header.textContent = "Ingeniería en Informática";
       materias = getPlanInformatica();
       break;
     case "iamb":
+      titulo_header.textContent = "Ingeniería Ambiental";
       materias = getPlanAmbiental();
       break;
     case "irh":
+      titulo_header.textContent = "Ingeniería en Recursos Hídricos";
       materias = getPlanRecursosHidricos();
       break;
     case "iag":
+      titulo_header.textContent = "Ingeniería en Agrimensura";
       materias = getPlanAgrimensura();
       break;
   }
