@@ -14,9 +14,11 @@ const titulo_header = document.querySelector(".carrera_header");
 let regulares = [0];
 let aprobadas = [0];
 let materias = [];
+let carrera_seleccionada = "ii";
 
 //funciones
 const getMaterias = (carrera) => {
+  carrera_seleccionada = carrera;
   switch (carrera) {
     case "ii":
       titulo_header.textContent = "Ingeniería en Informática";
@@ -121,8 +123,10 @@ const cambiarEstado = (id) => {
     actualizarInfo();
     actualizarMaterias();
   }
-  //console.log("regulares ", regulares);
-  //console.log("aprobadas ", aprobadas);
+  setLocalStorage();
+
+  // console.log("regulares ", regulares);
+  // console.log("aprobadas ", aprobadas);
 };
 
 const actualizarInfo = () => {
@@ -133,10 +137,7 @@ const actualizarInfo = () => {
   cant_mat_regulares.innerText = cant_regulares - cant_aprobadas;
   cant_mat_aprobadas.innerText = cant_aprobadas;
   cant_mat_restantes.innerText = cant_total - cant_aprobadas;
-  porc_avance.innerText = (
-    ((aprobadas.length - 1) * 100) /
-    materias.length
-  ).toFixed(2);
+  porc_avance.innerText = ((cant_aprobadas * 100) / cant_total).toFixed(2);
 };
 
 const actualizarMaterias = () => {
@@ -183,12 +184,44 @@ selector_carrera.addEventListener("change", (e) => {
   aprobadas = [0];
   materias = [];
   getMaterias(e.target.value);
+  getLocalStorage();
   actualizarInfo();
   actualizarMaterias();
   scroll(0, 0);
 });
 
+// manejo localStorage
+const getLocalStorage = () => {
+  const data = JSON.parse(localStorage.getItem(carrera_seleccionada));
+  if (data) {
+    regulares = data.regulares;
+    aprobadas = data.aprobadas;
+
+    actualizarEstadosMaterias();
+  }
+};
+
+const actualizarEstadosMaterias = () => {
+  regulares.forEach((id) => {
+    if (id > 0) {
+      document.getElementById(id).className = "regularizada";
+    }
+  });
+  aprobadas.forEach((id) => {
+    if (id > 0) {
+      document.getElementById(id).className = "aprobada";
+    }
+  });
+};
+
+const setLocalStorage = () => {
+  localStorage.setItem(
+    carrera_seleccionada,
+    JSON.stringify({ regulares, aprobadas })
+  );
+};
 //--------------------------------------------
 getMaterias("ii");
+getLocalStorage();
 actualizarInfo();
 actualizarMaterias();
