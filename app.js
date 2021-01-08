@@ -185,6 +185,7 @@ selector_carrera.addEventListener("change", (e) => {
   getMaterias(e.target.value);
   actualizarInfo();
   actualizarMaterias();
+  scroll(0, 0);
 });
 
 //--------------------------------------------
