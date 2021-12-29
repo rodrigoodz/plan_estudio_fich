@@ -167,14 +167,9 @@ document.addEventListener("click", function (e) {
   if (e.target.tagName === "LI" && e.target.className != "") {
     cambiarEstado(e.target.id);
   } else if (e.target.tagName === "LI" && e.target.className == "") {
-    // alert(
-    //   "No podes cursar esta materia hasta no regularizar/aprobar las anteriores"
-    // );
-    Swal.fire({
-      icon: "error",
-      text:
-        "No podes cursar esta materia hasta no regularizar/aprobar las anteriores",
-    });
+    alert(
+      "No podes cursar esta materia hasta no regularizar/aprobar las anteriores"
+    );
   }
 });
 
